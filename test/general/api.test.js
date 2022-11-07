@@ -14,7 +14,7 @@ describe('/api should work', async () => {
   it('should return {success: true}', async () => {
     const response = await app.inject({
       method: 'GET',
-      url: '/api'
+      url: '/api/'
     });
 
     // checks is status code = 200
