@@ -1,18 +1,99 @@
 export const todo = {
+  '/todo/:todoId': {
+    get: {
+      summary: 'Get a todo',
+      operationId: 'getTodo',
+      parameters: [
+        {
+          $ref: '#/components/parameters/TodoParameterId'
+        }
+      ],
+      responses: {
+        200: {
+          description: 'A todo object',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/TodoObject'
+              }
+            }
+          }
+        }
+      }
+    },
+    put: {
+      summary: 'Update a todo',
+      operationId: 'updateTodo',
+      parameters: [
+        {
+          $ref: '#/components/parameters/TodoParameterId'
+        }
+      ],
+      requestBody: {
+        description: 'The request body for todo',
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/TodoRequestObject'
+            }
+          }
+        },
+        required: true
+      },
+      responses: {
+        200: {
+          description: 'A todo object',
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/TodoObject'
+              }
+            }
+          }
+        }
+      }
+    },
+    delete: {
+      summary: 'Delete a todo',
+      operationId: 'deleteTodo',
+      parameters: [
+        {
+          $ref: '#/components/parameters/TodoParameterId'
+        }
+      ],
+      responses: {
+        200: {
+          description: 'successful response',
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  success: {
+                    type: 'boolean'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   '/todo': {
     post: {
       summary: 'Create a todo',
       operationId: 'createTodo',
       requestBody: {
-      description: 'The request body for todo',
-      content: {
-        'application/json': {
-          schema: {
-            $ref: '#/components/schemas/TodoRequestRequiredObject'
+        description: 'The request body for todo',
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/TodoRequestRequiredObject'
+            }
           }
-        }
-      },
-      required: true
+        },
+        required: true
       },
       responses: {
         200: {
@@ -49,7 +130,7 @@ export const todo = {
                 type: 'array',
                 items: {
                   $ref: '#/components/schemas/TodoObject'
-                } 
+                }
               }
             }
           }
@@ -57,4 +138,4 @@ export const todo = {
       }
     }
   }
-}
+};
