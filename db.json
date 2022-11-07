@@ -1,89 +1,33 @@
 {
   "todos": {
-    "0610e4a8-5702-4346-883b-1ad9140c6a18": {
-      "title": "new Todo",
-      "description": "new Description",
-      "isDone": false,
-      "createdDate": 1665944600817,
-      "updatedDate": 1665944600817
-    },
-    "4aadec6a-4af2-4300-900d-27e33d470450": {
-      "title": "new Todo 2",
-      "description": "new Description 2",
+    "494d1e01-43af-4aee-8da8-69b871486d4b": {
+      "title": "working swagger",
+      "description": "eyyy",
       "isDone": true,
-      "createdDate": 1665944600831,
-      "updatedDate": 1665944600831
+      "createdDate": 1667784730121,
+      "updatedDate": 1667784730121
     },
-    "7d0b506e-df8e-439d-b3dc-0694169fd78c": {
-      "title": "new Todo for update",
-      "description": "new Description 2",
+    "e7bffc6b-4046-4cd3-99f5-c21c1fc5bd39": {
+      "title": "string",
+      "description": "string",
       "isDone": true,
-      "createdDate": 1665944601021,
-      "updatedDate": 1665944601030
+      "createdDate": 1667785847576,
+      "updatedDate": 1667785847576
     },
-    "1ae62797-eef1-466d-8d0b-c8b0ec24e554": {
-      "title": "new Todo for get",
-      "description": "new Description",
+    "40ffe7d8-7075-492a-8ff4-2f62a33d01cd": {
+      "title": "string",
+      "description": "string",
       "isDone": true,
-      "createdDate": 1665944601113,
-      "updatedDate": 1665944601115
+      "createdDate": 1667785860733,
+      "updatedDate": 1667785860733
     },
-    "7a763972-534a-48fc-9e37-f6298aa43d75": {
-      "title": "new Todo for update 2",
-      "description": "new Description",
-      "isDone": false,
-      "createdDate": 1665944601118,
-      "updatedDate": 1665944601120
-    },
-    "aa427fc6-64a9-4a7e-b5bb-fb159cfc0135": {
-      "title": "new Todo for get",
-      "description": "new Description",
-      "isDone": false,
-      "createdDate": 1665944601212,
-      "updatedDate": 1665944601212
-    },
-    "57c28fff-b2d2-4214-920c-07d5059bff99": {
-      "title": "new Todo",
-      "description": "new Description",
-      "isDone": false,
-      "createdDate": 1665944622867,
-      "updatedDate": 1665944622867
-    },
-    "b4e13fdd-a28b-4539-aa25-75a91238b748": {
-      "title": "new Todo 2",
-      "description": "new Description 2",
+    "b139a220-dc90-435e-8812-d38ba2fb6609": {
+      "title": "test",
+      "description": "string",
       "isDone": true,
-      "createdDate": 1665944622890,
-      "updatedDate": 1665944622890
-    },
-    "415cc261-8588-491a-a6c1-afd2ebac021f": {
-      "title": "new Todo for update",
-      "description": "new Description 2",
-      "isDone": true,
-      "createdDate": 1665944622958,
-      "updatedDate": 1665944622966
-    },
-    "24e6cd2e-292c-4458-9e4f-182778385f8e": {
-      "title": "new Todo for get",
-      "description": "new Description",
-      "isDone": true,
-      "createdDate": 1665944622974,
-      "updatedDate": 1665944622977
-    },
-    "69c7b610-e8ae-4c1b-b488-f4d27bd45ad8": {
-      "title": "new Todo for update 2",
-      "description": "new Description",
-      "isDone": false,
-      "createdDate": 1665944622982,
-      "updatedDate": 1665944623014
-    },
-    "0bc37f9b-fb59-4c5d-a33a-ac6096f3d8a9": {
-      "title": "new Todo for get",
-      "description": "new Description",
-      "isDone": false,
-      "createdDate": 1665944623046,
-      "updatedDate": 1665944623046
+      "createdDate": 1667785868174,
+      "updatedDate": 1667785868174
     }
   },
-  "test": 1665944622036
+  "test": 1667781741708
 }

@@ -4,7 +4,6 @@ import openAPIGlue from 'fastify-openapi-glue';
 import swagger from '@fastify/swagger';
 import { Service } from './services/index.js';
 import { specification } from './specification/index.js';
-
 const prefix = '/api';
 
 export async function build () {
@@ -26,9 +25,8 @@ export async function build () {
     exposeRoute: true
   };
 
-  fastify.register(openAPIGlue, openAPIGlueOptions);
   fastify.register(swagger, swaggerOptions);
-
+  fastify.register(openAPIGlue, openAPIGlueOptions);
 
   // fastify.get(prefix, general);
 
