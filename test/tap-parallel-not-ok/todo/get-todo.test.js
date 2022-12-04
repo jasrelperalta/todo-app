@@ -90,6 +90,9 @@ describe('Getting a todo should work', async () => {
 
     const response = await app.inject({
       method: 'GET',
+      headers: {
+        cookie
+      },
       url: `${prefix}/todo/${id}`
     });
 

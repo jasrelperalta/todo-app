@@ -90,6 +90,9 @@ describe('Deleting a todo should work', async () => {
 
     const response = await app.inject({
       method: 'DELETE',
+      headers: {
+        cookie
+      },
       url: `${prefix}/todo/${id}`
     });
 
@@ -102,6 +105,9 @@ describe('Deleting a todo should work', async () => {
 
     const getResponse = await app.inject({
       method: 'GET',
+      headers: {
+        cookie
+      },
       url: `${prefix}/todo/${id}`
     });
 
