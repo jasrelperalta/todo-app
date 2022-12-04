@@ -13,7 +13,9 @@ describe('Deleting a todo should work', async () => {
   let app;
 
   before(async () => {
-    app = await build();
+    app = await build({
+      forceCloseConnections: true
+    });
   });
 
   const newUser = {
@@ -104,5 +106,9 @@ describe('Deleting a todo should work', async () => {
     });
 
     getResponse.statusCode.must.be.equal(404);
+  });
+
+  after(async () => {
+    await app.close();
   });
 });

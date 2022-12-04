@@ -13,7 +13,9 @@ describe('Get many todo should work', async () => {
   let app;
 
   before(async () => {
-    app = await build();
+    app = await build({
+      forceCloseConnections: true
+    });
   });
 
   const newUser = {
@@ -100,5 +102,9 @@ describe('Get many todo should work', async () => {
 
     // expect that id exists
     result.length.must.not.be.above(2);
+  });
+
+  after(async () => {
+    await app.close();
   });
 });

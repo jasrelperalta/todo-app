@@ -23,7 +23,9 @@ describe('Creating a todo should work', async () => {
   let cookie = '';
 
   before(async () => {
-    app = await build();
+    app = await build({
+      forceCloseConnections: true
+    });
   });
 
   it('should return the user that was created with a new user', async () => {
@@ -133,5 +135,9 @@ describe('Creating a todo should work', async () => {
     // expect createdDate and updateDate is not null
     result.createdDate.must.not.be.null();
     result.updatedDate.must.not.be.null();
+  });
+
+  after(async () => {
+    await app.close();
   });
 });

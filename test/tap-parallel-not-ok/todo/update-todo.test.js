@@ -13,7 +13,9 @@ describe('Update a todo should work', async () => {
   let app;
 
   before(async () => {
-    app = await build();
+    app = await build({
+      forceCloseConnections: true
+    });
   });
 
   const newUser = {
@@ -213,5 +215,9 @@ describe('Update a todo should work', async () => {
     // expect createdDate and updateDate is not null
     result.createdDate.must.equal(createdDate);
     result.updatedDate.must.above(updatedDate);
+  });
+
+  after(async () => {
+    await app.close();
   });
 });
