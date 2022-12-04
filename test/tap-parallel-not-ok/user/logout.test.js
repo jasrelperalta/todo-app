@@ -1,5 +1,5 @@
 import tap from 'tap';
-import { build } from '../../src/app.js';
+import { build } from '../../../src/app.js';
 import 'must/register.js';
 import Chance from 'chance';
 
@@ -9,7 +9,7 @@ tap.mochaGlobals();
 
 const prefix = '/api';
 
-describe('Logging in a user should work', async () => {
+describe('Logging out a user should work', async () => {
   let app;
 
   before(async () => {
@@ -22,6 +22,8 @@ describe('Logging in a user should work', async () => {
     firstName: chance.first(),
     lastName: chance.last()
   };
+
+  let cookie = '';
 
   it('should return the user that was created with a new user', async () => {
     const response = await app.inject({
@@ -61,37 +63,33 @@ describe('Logging in a user should work', async () => {
 
     // checks is status code = 200
     response.statusCode.must.be.equal(200);
+    cookie = response.headers['set-cookie'];
   });
-  it('Login should return an error if username does not exist', async () => {
+
+  it('Logout should work', async () => {
     const response = await app.inject({
-      method: 'POST',
-      url: `${prefix}/login`,
+      method: 'GET',
+      url: `${prefix}/logout`,
       headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: 'test',
-        password: 'newUser.password'
-      })
+        'Content-Type': 'application/json',
+        cookie
+      }
     });
 
-    // checks is status code = 401 since its unauthorized
-    response.statusCode.must.be.equal(401);
+    // checks is status code = 200
+    response.statusCode.must.be.equal(200);
   });
-  it('Login should return an error if password is incorrect', async () => {
+
+  it('Logout should return an error without a cookie', async () => {
     const response = await app.inject({
-      method: 'POST',
-      url: `${prefix}/login`,
+      method: 'GET',
+      url: `${prefix}/logout`,
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: newUser.username,
-        password: 'newUser.password'
-      })
+      }
     });
 
-    // checks is status code = 401 since its unauthorized
+    // this checks if HTTP status code is equal to 401
     response.statusCode.must.be.equal(401);
   });
 });

@@ -1,5 +1,5 @@
 import tap from 'tap';
-import { build } from '../../src/app.js';
+import { build } from '../../../src/app.js';
 import 'must/register.js';
 import Chance from 'chance';
 
@@ -9,18 +9,21 @@ tap.mochaGlobals();
 
 const prefix = '/api';
 
-describe('Logging out a user should work', async () => {
+describe('Deleting a todo should work', async () => {
   let app;
 
   before(async () => {
     app = await build();
   });
 
+
+
   const newUser = {
-    username: chance.email({ domain: 'example.com' }),
-    password: chance.string({ length: 12 }),
+    username: chance.email({ domain: ' example.com' }),
+    password: chance.string({ legnth: 12 }),
     firstName: chance.first(),
     lastName: chance.last()
+
   };
 
   let cookie = '';
@@ -63,33 +66,45 @@ describe('Logging out a user should work', async () => {
 
     // checks is status code = 200
     response.statusCode.must.be.equal(200);
+
     cookie = response.headers['set-cookie'];
   });
 
-  it('Logout should work', async () => {
-    const response = await app.inject({
-      method: 'GET',
-      url: `${prefix}/logout`,
+  it('Should return success = true if ID is deleted', async () => {
+    const newTodo = {
+      title: 'new Todo for get',
+      description: 'new Description'
+    };
+
+    const createResponse = await app.inject({
+      method: 'POST',
+      url: `${prefix}/todo`,
       headers: {
         'Content-Type': 'application/json',
         cookie
-      }
+      },
+      body: JSON.stringify(newTodo)
+    });
+
+    const { id } = await createResponse.json();
+
+    const response = await app.inject({
+      method: 'DELETE',
+      url: `${prefix}/todo/${id}`
     });
 
     // checks is status code = 200
     response.statusCode.must.be.equal(200);
-  });
+    const result = await response.json();
 
-  it('Logout should return an error without a cookie', async () => {
-    const response = await app.inject({
+    // expect success = true
+    result.success.must.be.true();
+
+    const getResponse = await app.inject({
       method: 'GET',
-      url: `${prefix}/logout`,
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      url: `${prefix}/todo/${id}`
     });
 
-    // this checks if HTTP status code is equal to 401
-    response.statusCode.must.be.equal(401);
+    getResponse.statusCode.must.be.equal(404);
   });
 });

@@ -1,5 +1,5 @@
 import tap from 'tap';
-import { build } from '../../src/app.js';
+import { build } from '../../../src/app.js';
 import 'must/register.js';
 import Chance from 'chance';
 
