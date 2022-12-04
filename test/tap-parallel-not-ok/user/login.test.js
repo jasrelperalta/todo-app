@@ -62,7 +62,7 @@ describe('Logging in a user should work', async () => {
     // checks is status code = 200
     response.statusCode.must.be.equal(200);
   });
-  
+
   it('Login should return an error if username does not exist', async () => {
     const response = await app.inject({
       method: 'POST',

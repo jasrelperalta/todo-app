@@ -16,8 +16,6 @@ describe('Deleting a todo should work', async () => {
     app = await build();
   });
 
-
-
   const newUser = {
     username: chance.email({ domain: ' example.com' }),
     password: chance.string({ legnth: 12 }),

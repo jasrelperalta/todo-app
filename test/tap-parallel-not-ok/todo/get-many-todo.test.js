@@ -71,6 +71,9 @@ describe('Get many todo should work', async () => {
   it('Should return a list of objects with default limit', async () => {
     const response = await app.inject({
       method: 'GET',
+      headers: {
+        cookie
+      },
       url: `${prefix}/todo`
     });
 
@@ -85,6 +88,9 @@ describe('Get many todo should work', async () => {
   it('Should return a list of objects with default limit', async () => {
     const response = await app.inject({
       method: 'GET',
+      headers: {
+        cookie
+      },
       url: `${prefix}/todo?limit=2`
     });
 
