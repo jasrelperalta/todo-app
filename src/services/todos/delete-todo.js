@@ -1,9 +1,17 @@
 import { getDB, saveDB } from '../../utils/db/index.js';
 
 export const deleteTodo = async (request, reply) => {
-  const { params } = request;
+  const { params, username } = request;
   const { todoId: id } = params;
   const db = await getDB();
+
+  if (!username) {
+    return reply.badRequest();
+  }
+
+  if (db.todos[id].username !== username) {
+    return reply.forbidden('You are not the owner of this todo');
+  }
 
   delete db.todos[id];
 

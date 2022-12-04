@@ -1,8 +1,13 @@
 import { getDB } from '../../utils/db/index.js';
 
 export const getManyTodo = async (request, reply) => {
-  const { query } = request;
+  const { query, username } = request;
   const { limit = 5 } = query;
+
+  if (!username) {
+    return reply.badRequest();
+  }
+
   const db = await getDB();
 
   const list = [];
@@ -17,7 +22,8 @@ export const getManyTodo = async (request, reply) => {
     })
     .sort(function (todo1, todo2) {
       return todo2.createdDate - todo1.createdDate;
-    });
+    })
+    .filter((todo) => (username === todo.username));
 
   for (const todo of todos) {
     list.push(todo);
